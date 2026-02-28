@@ -136,8 +136,34 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 ```
 
 ## Testing
-```
-```
+
+### SSH Testing (Failed Scenario)
+
+Testing SSH
+
+<p align="center">
+<img src="img/test-ssh.png">
+</p>
+
+Target Bloking IP (Failed Acces SSH)
+
+<p align="center">
+<img src="img/test-sshblock.png">
+</p>
+
+### Proxmox Login Testing (Failed Scenario)
+
+Testing Login
+
+<p align="center">
+<img src="img/test-login.png">
+</p>
+
+Target Blocking IP (Failed Access Proxmox Login)
+
+<p align="center">
+<img src="img/test-block.png">
+</p>
 
 ## Unban IP 
 
