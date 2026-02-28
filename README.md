@@ -38,7 +38,17 @@ systemctl status fail2ban
 
 Unban status SSH
 ```
-fail2ban-client status sshd
+root@pve:~# fail2ban-client status sshd
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     5
+|  `- Journal matches:  _SYSTEMD_UNIT=sshd.service + _COMM=sshd
+`- Actions
+   |- Currently banned: 1
+   |- Total banned:     1
+   `- Banned IP list:   10.13.3.55
+root@pve:~# 
 ```
 
 Unban IP for SSH
@@ -48,7 +58,17 @@ fail2ban-client set sshd unbanip 10.13.3.55
 
 Unban status Proxmox
 ```
-fail2ban-client status proxmox
+root@pve:~# fail2ban-client status proxmox
+Status for the jail: proxmox
+|- Filter
+|  |- Currently failed: 0
+|  |- Total failed:     6
+|  `- Journal matches:
+`- Actions
+   |- Currently banned: 1
+   |- Total banned:     2
+   `- Banned IP list:   10.13.3.55
+root@pve:~# 
 ```
 
 Unban IP for HTTP, HTTPS
