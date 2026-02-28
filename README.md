@@ -26,8 +26,15 @@ Fail2Ban is an open-source intrusion prevention framework that protects Linux se
 ```
 
 ## Verification
+
+Status Fail2ban
 ```
 systemctl status fail2ban
+```
+
+Log Monitoring Fail2ban
+```
+tail -f /var/log/fail2ban.log
 ```
 
 ## Testing
