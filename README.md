@@ -67,14 +67,70 @@ Need to get 549 kB of archives.
 
 ## Verification
 
+Error Configuration, Edit File /etc/fail2ban/fail2ban.conf
+```
+[Definition]
+
+allowipv6 = no ## add configuration
+```
+
+Create File /etc/fail2ban/jail.local
+```
+[sshd]
+port    = ssh
+logpath = %(sshd_log)s
+enabled = true
+backend = systemd
+
+[proxmox]
+enabled = true
+port    = https,http,8006
+filter  = proxmox
+logpath = /var/log/daemon.log
+maxretry = 3
+bantime = 3600
+backend = systemd
+```
+
+Create File /etc/fail2ban/filter.d/proxmox.conf
+```
+[Definition]
+failregex = ^.*pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*$
+ignoreregex =
+```
+
 Status Fail2ban
 ```
-systemctl status fail2ban
+root@awc-east-01:~# systemctl status fail2ban
+● fail2ban.service - Fail2Ban Service
+     Loaded: loaded (/lib/systemd/system/fail2ban.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2026-02-28 16:58:19 WIB; 1s ago
+       Docs: man:fail2ban(1)
+   Main PID: 1878499 (fail2ban-server)
+      Tasks: 7 (limit: 28551)
+     Memory: 51.1M
+        CPU: 215ms
+     CGroup: /system.slice/fail2ban.service
+             └─1878499 /usr/bin/python3 /usr/bin/fail2ban-server -xf start
+
+Feb 28 16:58:19 awc-east-01.local systemd[1]: Started fail2ban.service - Fail2Ban Service.
+Feb 28 16:58:19 awc-east-01.local fail2ban-server[1878499]: Server ready
+root@awc-east-01:~# 
 ```
 
 Log Monitoring Fail2ban
 ```
-tail -f /var/log/fail2ban.log
+root@awc-east-01:~# tail -f /var/log/fail2ban.log
+2026-02-28 16:58:19,597 fail2ban.jail           [1878499]: INFO    Initiated 'systemd' backend
+2026-02-28 16:58:19,598 fail2ban.filter         [1878499]: INFO      maxRetry: 3
+2026-02-28 16:58:19,598 fail2ban.filter         [1878499]: INFO      findtime: 600
+2026-02-28 16:58:19,598 fail2ban.actions        [1878499]: INFO      banTime: 3600
+2026-02-28 16:58:19,598 fail2ban.filter         [1878499]: INFO      encoding: UTF-8
+2026-02-28 16:58:19,598 fail2ban.jail           [1878499]: INFO    Jail 'sshd' started
+2026-02-28 16:58:19,599 fail2ban.filtersystemd  [1878499]: NOTICE  [proxmox] Jail started without 'journalmatch' set. Jail regexs will be checked against all journal entries, which is not advised for performance reasons.
+2026-02-28 16:58:19,599 fail2ban.jail           [1878499]: INFO    Jail 'proxmox' started
+2026-02-28 16:58:19,603 fail2ban.filtersystemd  [1878499]: INFO    [sshd] Jail is in operation now (process new journal entries)
+2026-02-28 16:58:22,855 fail2ban.filtersystemd  [1878499]: INFO    [proxmox] Jail is in operation now (process new journal entries)
 ```
 
 ## Testing
