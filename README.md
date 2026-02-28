@@ -141,7 +141,7 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 
 ## Unban IP 
 
-Unban status SSH
+### Unban status SSH
 ```
 root@pve:~# fail2ban-client status sshd
 Status for the jail: sshd
@@ -156,12 +156,12 @@ Status for the jail: sshd
 root@pve:~# 
 ```
 
-Unban IP for SSH
+### Unban IP for SSH
 ```
 fail2ban-client set sshd unbanip 10.13.3.55
 ```
 
-Unban status Proxmox
+### Unban status Proxmox
 ```
 root@pve:~# fail2ban-client status proxmox
 Status for the jail: proxmox
@@ -176,7 +176,7 @@ Status for the jail: proxmox
 root@pve:~# 
 ```
 
-Unban IP for HTTP, HTTPS
+### Unban IP for HTTP, HTTPS
 ```
 fail2ban-client set proxmox unbanip 10.13.3.55
 ```
