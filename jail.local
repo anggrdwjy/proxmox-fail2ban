@@ -1,0 +1,14 @@
+[sshd]
+port    = ssh
+logpath = %(sshd_log)s
+enabled = true
+backend = systemd
+
+[proxmox]
+enabled = true
+port    = https,http,8006
+filter  = proxmox
+logpath = /var/log/daemon.log
+maxretry = 3
+bantime = 3600
+backend = systemd
