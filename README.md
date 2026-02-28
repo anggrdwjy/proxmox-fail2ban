@@ -67,7 +67,7 @@ Need to get 549 kB of archives.
 
 ## Verification
 
-Error Fail2ban after restart
+### Error Issue Fail2ban
 
 Step 1 - Edit File /etc/fail2ban/fail2ban.conf
 ```
