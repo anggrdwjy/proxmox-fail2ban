@@ -67,14 +67,16 @@ Need to get 549 kB of archives.
 
 ## Verification
 
-Error Configuration, Edit File /etc/fail2ban/fail2ban.conf
+Error Fail2ban after restart
+
+Step 1 - Edit File /etc/fail2ban/fail2ban.conf
 ```
 [Definition]
 
 allowipv6 = no ## add configuration
 ```
 
-Create File /etc/fail2ban/jail.local
+Step 2 - Create File /etc/fail2ban/jail.local
 ```
 [sshd]
 port    = ssh
@@ -92,7 +94,7 @@ bantime = 3600
 backend = systemd
 ```
 
-Create File /etc/fail2ban/filter.d/proxmox.conf
+Step 3 - Create File /etc/fail2ban/filter.d/proxmox.conf
 ```
 [Definition]
 failregex = ^.*pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*$
