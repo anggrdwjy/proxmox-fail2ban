@@ -137,7 +137,7 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 
 ## Testing
 
-### SSH Testing (Failed Scenario)
+### SSH Testing (Fail SSH Scenario)
 
 Testing SSH
 
@@ -151,7 +151,7 @@ Target Bloking IP (Failed Acces SSH)
 <img src="img/test-sshblock.png">
 </p>
 
-### Proxmox Login Testing (Failed Scenario)
+### Proxmox Login Testing (Fail Login Scenario)
 
 Testing Login
 
