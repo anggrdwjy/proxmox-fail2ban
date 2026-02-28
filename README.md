@@ -145,7 +145,7 @@ Testing SSH
 <img src="img/test-ssh.png">
 </p>
 
-Target Bloking IP (Failed Acces SSH)
+Target Bloking IP (Fail Acces SSH)
 
 <p align="left">
 <img src="img/test-sshblock.png">
@@ -159,7 +159,7 @@ Testing Login
 <img src="img/test-login.png">
 </p>
 
-Target Blocking IP (Failed Access Proxmox Login)
+Target Blocking IP (Fail Access Proxmox Login)
 
 <p align="left">
 <img src="img/test-block.png">
