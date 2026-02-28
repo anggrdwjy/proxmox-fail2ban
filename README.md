@@ -27,13 +27,16 @@ Fail2Ban is an open-source intrusion prevention framework that protects Linux se
 
 ## Verification
 ```
+systemctl restart fail2ban
+systemctl status fail2ban
+systemctl is-enabled fail2ban
 ```
 
 ## Testing
 ```
 ```
 
-## Unban
+## Unban IP 
 
 Unban status SSH
 ```
