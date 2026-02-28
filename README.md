@@ -101,7 +101,7 @@ failregex = ^.*pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*$
 ignoreregex =
 ```
 
-Status Fail2ban
+### Status Fail2ban
 ```
 root@awc-east-01:~# systemctl status fail2ban
 ● fail2ban.service - Fail2Ban Service
@@ -120,7 +120,7 @@ Feb 28 16:58:19 awc-east-01.local fail2ban-server[1878499]: Server ready
 root@awc-east-01:~# 
 ```
 
-Log Monitoring Fail2ban
+### Log Monitoring Fail2ban
 ```
 root@awc-east-01:~# tail -f /var/log/fail2ban.log
 2026-02-28 16:58:19,597 fail2ban.jail           [1878499]: INFO    Initiated 'systemd' backend
