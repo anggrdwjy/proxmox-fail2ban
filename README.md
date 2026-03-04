@@ -67,8 +67,6 @@ Need to get 549 kB of archives.
 
 ## Verification
 
-### Error Issue Fail2ban
-
 #### Step 1 - Edit File /etc/fail2ban/fail2ban.conf
 ```
 [Definition]
@@ -101,7 +99,7 @@ failregex = ^.*pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*$
 ignoreregex =
 ```
 
-#### Status Fail2ban
+#### Step 4. Status Fail2ban
 ```
 root@awc-east-01:~# systemctl status fail2ban
 ● fail2ban.service - Fail2Ban Service
