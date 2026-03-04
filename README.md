@@ -4,15 +4,15 @@
 <img src="img/banner.png">
 </p>
 
-### Information
+#### Information
 
 Fail2Ban is an open-source intrusion prevention framework that protects Linux servers from brute-force attacks by monitoring log files (e.g., SSH, Apache) for malicious activity. It automatically updates firewall rules (iptables/nftables) to ban IP addresses that exhibit suspicious behavior, such as too many failed login attempts
 
-### Tested Version
+#### Tested Version
 
 * Proxmox Virtualizaztion Environment 8.3
 
-### Issue Bruteforce
+#### Issue Bruteforce
 
 * Bruteforce SSH (Port 22)
 * Bruteforce Login Pages (HTTP, HTTPS, Port 8006)
@@ -69,14 +69,14 @@ Need to get 549 kB of archives.
 
 ### Error Issue Fail2ban
 
-Step 1 - Edit File /etc/fail2ban/fail2ban.conf
+#### Step 1 - Edit File /etc/fail2ban/fail2ban.conf
 ```
 [Definition]
 
 allowipv6 = no ## add configuration
 ```
 
-Step 2 - Create File /etc/fail2ban/jail.local
+#### Step 2 - Create File /etc/fail2ban/jail.local
 ```
 [sshd]
 port    = ssh
@@ -94,14 +94,14 @@ bantime = 3600
 backend = systemd
 ```
 
-Step 3 - Create File /etc/fail2ban/filter.d/proxmox.conf
+#### Step 3 - Create File /etc/fail2ban/filter.d/proxmox.conf
 ```
 [Definition]
 failregex = ^.*pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*$
 ignoreregex =
 ```
 
-### Status Fail2ban
+#### Status Fail2ban
 ```
 root@awc-east-01:~# systemctl status fail2ban
 ● fail2ban.service - Fail2Ban Service
@@ -120,7 +120,7 @@ Feb 28 16:58:19 awc-east-01.local fail2ban-server[1878499]: Server ready
 root@awc-east-01:~# 
 ```
 
-### Log Monitoring Fail2ban
+#### Log Monitoring Fail2ban
 ```
 root@awc-east-01:~# tail -f /var/log/fail2ban.log
 2026-02-28 16:58:19,597 fail2ban.jail           [1878499]: INFO    Initiated 'systemd' backend
@@ -139,13 +139,13 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 
 ### SSH Testing (Fail SSH Scenario)
 
-Testing SSH
+#### Testing SSH
 
 <p align="left">
 <img src="img/test-ssh.png">
 </p>
 
-Target Bloking IP (Fail Acces SSH)
+#### Target Bloking IP (Fail Acces SSH)
 
 <p align="left">
 <img src="img/test-sshblock.png">
@@ -153,13 +153,13 @@ Target Bloking IP (Fail Acces SSH)
 
 ### Proxmox Login Testing (Fail Login Scenario)
 
-Testing Login
+#### Testing Login
 
 <p align="left">
 <img src="img/test-login.png">
 </p>
 
-Target Blocking IP (Fail Access Proxmox Login)
+#### Target Blocking IP (Fail Access Proxmox Login)
 
 <p align="left">
 <img src="img/test-block.png">
@@ -167,7 +167,7 @@ Target Blocking IP (Fail Access Proxmox Login)
 
 ## Unban IP 
 
-### Unban status SSH
+#### Unban status SSH
 ```
 root@pve:~# fail2ban-client status sshd
 Status for the jail: sshd
@@ -182,12 +182,12 @@ Status for the jail: sshd
 root@pve:~# 
 ```
 
-### Unban IP for SSH
+#### Unban IP for SSH
 ```
 fail2ban-client set sshd unbanip 10.13.3.55
 ```
 
-### Unban status Proxmox
+#### Unban status Proxmox
 ```
 root@pve:~# fail2ban-client status proxmox
 Status for the jail: proxmox
@@ -202,7 +202,7 @@ Status for the jail: proxmox
 root@pve:~# 
 ```
 
-### Unban IP for HTTP, HTTPS
+#### Unban IP for HTTP, HTTPS
 ```
 fail2ban-client set proxmox unbanip 10.13.3.55
 ```
@@ -212,7 +212,7 @@ fail2ban-client set proxmox unbanip 10.13.3.55
 * [:octocat: Follow me on GitHub](https://github.com/anggrdwjy)
 * [🔔 Subscribe me on Youtube](https://www.youtube.com/@anggarda.wijaya)
   
-### Bug
+#### Bug
 
 Please open an issue on GitHub with as much information as possible if you found a bug.
 * Your Proxmox and Fail2ban Version
