@@ -137,7 +137,7 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 
 ## Testing
 
-### SSH Testing (Fail SSH Scenario)
+### Step 1. SSH Testing (Fail SSH Scenario)
 
 #### Testing SSH
 
@@ -151,7 +151,7 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 <img src="img/test-sshblock.png">
 </p>
 
-### Proxmox Login Testing (Fail Login Scenario)
+### Step 2. Proxmox Login Testing (Fail Login Scenario)
 
 #### Testing Login
 
@@ -165,7 +165,7 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 <img src="img/test-block.png">
 </p>
 
-## Unban IP 
+## Unbanned IP
 
 #### Unban status SSH
 ```
