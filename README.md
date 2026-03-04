@@ -4,7 +4,7 @@
 <img src="img/banner.png">
 </p>
 
-#### Information
+### Information
 
 Fail2Ban is an open-source intrusion prevention framework that protects Linux servers from brute-force attacks by monitoring log files (e.g., SSH, Apache) for malicious activity. It automatically updates firewall rules (iptables/nftables) to ban IP addresses that exhibit suspicious behavior, such as too many failed login attempts
 
