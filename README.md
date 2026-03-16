@@ -182,7 +182,7 @@ root@pve:~#
 
 #### Unban IP for SSH
 ```
-fail2ban-client set sshd unbanip 10.13.3.55
+root@pve:~# fail2ban-client set sshd unbanip 10.13.3.55
 ```
 
 #### Unban status Proxmox
@@ -202,7 +202,7 @@ root@pve:~#
 
 #### Unban IP for HTTP, HTTPS
 ```
-fail2ban-client set proxmox unbanip 10.13.3.55
+root@pve:~# fail2ban-client set proxmox unbanip 10.13.3.55
 ```
 
 ## Support
