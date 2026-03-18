@@ -1,4 +1,4 @@
-## Overview
+## A. Overview Fail2ban
 
 <p align="center">
 <img src="img/banner.png">
@@ -17,7 +17,7 @@ Fail2Ban is an open-source intrusion prevention framework that protects Linux se
 * Bruteforce SSH (Port 22)
 * Bruteforce Login Pages (HTTP, HTTPS, Port 8006)
 
-## Installing
+## B. Installing
 ```
 root@pve:~# git clone https://github.com/anggrdwjy/proxmox-fail2ban.git
 Cloning into 'proxmox-fail2ban'...
@@ -39,7 +39,7 @@ drwxrwxrwx 2 root root 4096 Feb 28 16:45 img
 root@pve:~/proxmox-fail2ban# 
 ```
 
-## Running
+## C. Running
 ```
 root@pve:~/proxmox-fail2ban# ./setup-fail2ban.sh 
 Get:1 http://security.debian.org bookworm-security InRelease [48.0 kB]
@@ -65,7 +65,7 @@ The following NEW packages will be installed:
 Need to get 549 kB of archives.
 ```
 
-## Verification
+## D. Verification
 
 #### Step 1 - Edit File /etc/fail2ban/fail2ban.conf
 ```
@@ -133,10 +133,9 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 2026-02-28 16:58:22,855 fail2ban.filtersystemd  [1878499]: INFO    [proxmox] Jail is in operation now (process new journal entries)
 ```
 
-## Testing
+## E. Testing
 
 ### Step 1. SSH Testing (Fail SSH Scenario)
-
 #### Testing SSH
 
 <p align="left">
@@ -163,7 +162,7 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 <img src="img/test-block.png">
 </p>
 
-## Unbanned IP
+## F. Unbanned IP
 #### Unban status SSH
 ```
 root@pve:~# fail2ban-client status sshd
