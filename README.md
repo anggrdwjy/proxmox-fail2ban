@@ -4,9 +4,15 @@
 <img src="img/banner.png">
 </p>
 
-#### Information
-
 Fail2Ban is an open-source intrusion prevention framework that protects Linux servers from brute-force attacks by monitoring log files (e.g., SSH, Apache) for malicious activity. It automatically updates firewall rules (iptables/nftables) to ban IP addresses that exhibit suspicious behavior, such as too many failed login attempts
+
+#### Information
+* [A. Overview Fail2ban](#a-overview-fail2ban)
+* [B. Installing Program](#b-installing-program)
+* [C. Running Program](#c-running-program)
+* [D. Verification](#d-verification)
+* [E. Testing](#e-testing)
+* [F. Unbanned IP](#f-unbanned-ip)
 
 #### Tested Version
 
@@ -17,7 +23,7 @@ Fail2Ban is an open-source intrusion prevention framework that protects Linux se
 * Bruteforce SSH (Port 22)
 * Bruteforce Login Pages (HTTP, HTTPS, Port 8006)
 
-## B. Installing
+## B. Installing Program
 ```
 root@pve:~# git clone https://github.com/anggrdwjy/proxmox-fail2ban.git
 Cloning into 'proxmox-fail2ban'...
@@ -39,7 +45,7 @@ drwxrwxrwx 2 root root 4096 Feb 28 16:45 img
 root@pve:~/proxmox-fail2ban# 
 ```
 
-## C. Running
+## C. Running Program
 ```
 root@pve:~/proxmox-fail2ban# ./setup-fail2ban.sh 
 Get:1 http://security.debian.org bookworm-security InRelease [48.0 kB]
