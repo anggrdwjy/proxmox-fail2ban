@@ -65,8 +65,6 @@ The following NEW packages will be installed:
 Need to get 549 kB of archives.
 ```
 
-#### Verification
-
 #### Edit File /etc/fail2ban/fail2ban.conf
 
 ```
