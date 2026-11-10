@@ -1,18 +1,10 @@
-## A. Overview Fail2ban
+## Overview Fail2ban
 
 <p align="center">
 <img src="img/banner.png">
 </p>
 
 Fail2Ban is an open-source intrusion prevention framework that protects Linux servers from brute-force attacks by monitoring log files (e.g., SSH, Apache) for malicious activity. It automatically updates firewall rules (iptables/nftables) to ban IP addresses that exhibit suspicious behavior, such as too many failed login attempts
-
-#### Information
-* [A. Overview Fail2ban](#a-overview-fail2ban)
-* [B. Installing Program](#b-installing-program)
-* [C. Running Program](#c-running-program)
-* [D. Verification](#d-verification)
-* [E. Testing](#e-testing)
-* [F. Unbanned IP](#f-unbanned-ip)
 
 #### Tested Version
 
@@ -23,7 +15,8 @@ Fail2Ban is an open-source intrusion prevention framework that protects Linux se
 * Bruteforce SSH (Port 22)
 * Bruteforce Login Pages (HTTP, HTTPS, Port 8006)
 
-## B. Installing Program
+#### Installing Program
+
 ```
 root@pve:~# git clone https://github.com/anggrdwjy/proxmox-fail2ban.git
 Cloning into 'proxmox-fail2ban'...
@@ -45,7 +38,8 @@ drwxrwxrwx 2 root root 4096 Feb 28 16:45 img
 root@pve:~/proxmox-fail2ban# 
 ```
 
-## C. Running Program
+#### Running Program
+
 ```
 root@pve:~/proxmox-fail2ban# ./setup-fail2ban.sh 
 Get:1 http://security.debian.org bookworm-security InRelease [48.0 kB]
@@ -71,16 +65,18 @@ The following NEW packages will be installed:
 Need to get 549 kB of archives.
 ```
 
-## D. Verification
+#### Verification
 
-#### Step 1 - Edit File /etc/fail2ban/fail2ban.conf
+#### Edit File /etc/fail2ban/fail2ban.conf
+
 ```
 [Definition]
 
 allowipv6 = no ## add configuration
 ```
 
-#### Step 2 - Create File /etc/fail2ban/jail.local
+#### Create File /etc/fail2ban/jail.local
+
 ```
 [sshd]
 port    = ssh
@@ -98,14 +94,15 @@ bantime = 3600
 backend = systemd
 ```
 
-#### Step 3 - Create File /etc/fail2ban/filter.d/proxmox.conf
+#### Create File proxmox.conf -> /etc/fail2ban/filter.d/proxmox.conf
 ```
 [Definition]
 failregex = ^.*pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*$
 ignoreregex =
 ```
 
-#### Step 4. Status Fail2ban
+#### Status Fail2ban
+
 ```
 root@awc-east-01:~# systemctl status fail2ban
 ● fail2ban.service - Fail2Ban Service
@@ -125,6 +122,7 @@ root@awc-east-01:~#
 ```
 
 #### Log Monitoring Fail2ban
+
 ```
 root@awc-east-01:~# tail -f /var/log/fail2ban.log
 2026-02-28 16:58:19,597 fail2ban.jail           [1878499]: INFO    Initiated 'systemd' backend
@@ -139,9 +137,9 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 2026-02-28 16:58:22,855 fail2ban.filtersystemd  [1878499]: INFO    [proxmox] Jail is in operation now (process new journal entries)
 ```
 
-## E. Testing
+#### Testing
 
-### Step 1. SSH Testing (Fail SSH Scenario)
+#### SSH Testing (Fail SSH Scenario)
 #### Testing SSH
 
 <p align="left">
@@ -154,7 +152,7 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 <img src="img/test-sshblock.png">
 </p>
 
-### Step 2. Proxmox Login Testing (Fail Login Scenario)
+#### Proxmox Login Testing (Fail Login Scenario)
 
 #### Testing Login
 
@@ -168,9 +166,10 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 <img src="img/test-block.png">
 </p>
 
-## F. Unbanned IP
-#### Unban status SSH
+#### Unbanned IP
+
 ```
+# Check Status Banned SSH
 root@pve:~# fail2ban-client status sshd
 Status for the jail: sshd
 |- Filter
@@ -181,16 +180,12 @@ Status for the jail: sshd
    |- Currently banned: 1
    |- Total banned:     1
    `- Banned IP list:   10.13.3.55
-root@pve:~# 
-```
+root@pve:~#
 
-#### Unban IP for SSH
-```
+# Unban IP for SSH
 root@pve:~# fail2ban-client set sshd unbanip 10.13.3.55
-```
 
-#### Unban status Proxmox
-```
+# Check Status Banned Login Proxmox
 root@pve:~# fail2ban-client status proxmox
 Status for the jail: proxmox
 |- Filter
@@ -202,14 +197,12 @@ Status for the jail: proxmox
    |- Total banned:     2
    `- Banned IP list:   10.13.3.55
 root@pve:~# 
-```
 
-#### Unban IP for HTTP, HTTPS
-```
+# Unban IP for HTTP, HTTPS
 root@pve:~# fail2ban-client set proxmox unbanip 10.13.3.55
 ```
 
-## Support
+#### Support
 
 * [:octocat: Follow me on GitHub](https://github.com/anggrdwjy)
 * [🔔 Subscribe me on Youtube](https://www.youtube.com/@anggarda.wijaya)
@@ -220,3 +213,9 @@ Please open an issue on GitHub with as much information as possible if you found
 * Your Proxmox and Fail2ban Version
 * All the logs and message outputted
 * etc
+
+## Lisensi
+
+This project is licensed under the **MIT License**—it is free to use, modify, and distribute, including for commercial purposes, as long as you include the copyright notice and this license.
+
+See the full file at [`LICENSE`](LICENSE).
