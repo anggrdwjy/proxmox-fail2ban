@@ -209,7 +209,7 @@ Please open an issue on GitHub with as much information as possible if you found
 * All the logs and message outputted
 * etc
 
-## Lisensi
+## License
 
 This project is licensed under the **MIT License**—it is free to use, modify, and distribute, including for commercial purposes, as long as you include the copyright notice and this license.
 
