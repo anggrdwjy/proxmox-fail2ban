@@ -135,10 +135,7 @@ root@awc-east-01:~# tail -f /var/log/fail2ban.log
 2026-02-28 16:58:22,855 fail2ban.filtersystemd  [1878499]: INFO    [proxmox] Jail is in operation now (process new journal entries)
 ```
 
-#### Testing
-
-#### SSH Testing (Fail SSH Scenario)
-#### Testing SSH
+#### Testing SSH (Bruteforce SSH Scenario)
 
 <p align="left">
 <img src="img/test-ssh.png">
